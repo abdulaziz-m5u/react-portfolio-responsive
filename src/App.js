@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
+import About from './components/About/About';
+import Skill from './components/Skill/Skill';
+import Qualification from './components/Qualification/Qualification';
+import Service from './components/Service/Service';
+import Portfolio from './components/Portfolio/Portfolio';
+import Project from './components/Project/Project';
+import Testimonial from './components/Testimonial/Testimonial';
+import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
 
 function App() {
+  const [color, setColor] = useState(false);
+  const changeHeaderColor = () => {
+    if (window.scrollY > 560) {
+      setColor(true);
+    } else {
+      setColor(false);
+    }
+  };
+
+  window.addEventListener('scroll', changeHeaderColor);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div className='main'>
+        <Hero />
+        <About />
+        <Skill />
+        <Qualification />
+        <Service />
+        <Portfolio />
+        <Project />
+        <Testimonial />
+        <Contact />
+      </div>
+      <Footer />
+      <a href='#home' className={`scrollup ${color ? 'show-scroll' : ' '}`}>
+        <i className='uil uil-arrow-up scrollup-icon'></i>
+      </a>
+    </>
   );
 }
 
